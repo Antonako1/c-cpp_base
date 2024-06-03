@@ -4,3 +4,4 @@ git init -b main
 git add .
 git commit -m "Initial commit"
 git status
+DEL test.bat

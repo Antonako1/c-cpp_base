@@ -12,7 +12,7 @@ project(${project_name})
 
 file(GLOB SOURCES 
 "./c/*.c"
-"./c/.h"
+"./c/*.h"
 "./cpp/*.cpp"
 "./cpp/*.hpp"
 )

@@ -1,7 +1,9 @@
 @ECHO off
-RMDIR /Q /S .git
+IF NOT pwd==%cd% (cd /d %~dp0) 
+RMDIR /Q /S \.git
 git init -b main
 git add .
 git commit -m "Initial commit"
 git status
-DEL test.bat
+DEL start.sh
+DEL start.bat

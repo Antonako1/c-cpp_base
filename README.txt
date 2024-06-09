@@ -1,13 +1,24 @@
-visual studio:
+windows, visual studio:
 C++ CMake tools for windows
 C++ v14.xx build tools for (processor)
 MSVC build tools
 
-en tiiä tuleeko sulle samaan polkuun kaiki toolit (.\batch\globals.bat\)
-Jos ei tuu niin pitäis löytyy: %ProgramFiles(x86)%\Microsoft Visual Studio\2019\Community\Common7\Tools
+linux:
+cmake, ninja and somekind of C/C++ compiler
 
-rakenna projekti:
-.\build.bat
+NOTE: See .\<win|linux>\<batch|shell>\globals.<bat|sh>. Enter your paths there, or the executable programs if they are found in the path
 
-Runnaa C_CPP_BASE.exe konsolissa
+initialize new git repository:
+.\start.<bat|sh>
 
+build project:
+.\<win|linux>\build.<bat|sh>
+
+run project:
+.\<win|linux>\run.<bat|sh> [args...]
+
+build and run the project:
+.\build_n_run.<bat|sh> [args...]
+
+clear build:
+.\<win|linux>\<batch|shell>\del.<bat|sh>

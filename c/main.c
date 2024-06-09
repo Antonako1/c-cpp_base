@@ -3,11 +3,11 @@
 #include "main.h"
 
 int main(int argc, char const *argv[]){
-    printf("El bruh, running functions!\n");
+    printf("running functions!\n");
 
-    const char *str = "pabou";
-    print_message(str); // second.c
+    const char *str = "teststring";
+    print_message(str);
 
-    cpp_call(argc, argv); // cpp_main.cpp
+    cpp_call(argc, argv);
     return 0;
 }

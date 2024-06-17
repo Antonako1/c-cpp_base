@@ -8,7 +8,7 @@ if (-not $isAdmin) {
     Start-Process powershell -Verb RunAs -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"$($MyInvocation.MyCommand.Path)`"")
     exit
 }
-
+$projectName = "C_CPP_BASE"
 # Define the path to the project folder
 $projectFolderPath = "$PSScriptRoot"
 
@@ -17,4 +17,4 @@ $currentPath = [System.Environment]::GetEnvironmentVariable("PATH", [System.Envi
 $newPath = $currentPath.Replace(";" + $projectFolderPath, "")
 [System.Environment]::SetEnvironmentVariable("PATH", $newPath, [System.EnvironmentVariableTarget]::Machine)
 
-Write-Host "project folder removed from the system PATH."
+Write-Host "$projectName folder removed from the system PATH."

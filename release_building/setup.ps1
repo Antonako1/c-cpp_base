@@ -9,6 +9,7 @@ if (-not $isAdmin) {
     exit
 }
 
+$projectName = "C_CPP_BASE"
 # Define the path to the project folder
 $projectFolderPath = "$PSScriptRoot"
 
@@ -18,7 +19,7 @@ if ($currentPath -split ";" -notcontains $projectFolderPath) {
     # Add the project folder to the system's PATH environment variable
     $newPath = $currentPath + ";" + $projectFolderPath
     [System.Environment]::SetEnvironmentVariable("PATH", $newPath, [System.EnvironmentVariableTarget]::Machine)
-    Write-Host "project folder added to the system PATH."
+    Write-Host "$projectName folder added to the system PATH."
 } else {
-    Write-Host "project folder is already present in the system PATH."
+    Write-Host "$projectName folder is already present in the system PATH."
 }

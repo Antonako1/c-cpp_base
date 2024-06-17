@@ -31,4 +31,11 @@ elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "
   target_compile_options(${project_name} PRIVATE -Werror)
 endif()
 
+# Set output directory based on OS
+if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
+  set_target_properties(${project_name} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/win")
+elseif (CMAKE_SYSTEM_NAME STREQUAL "Linux")
+  set_target_properties(${project_name} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/linux")
+endif()
+
 # TODO: Add tests and install targets if needed.

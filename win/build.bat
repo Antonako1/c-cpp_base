@@ -1,7 +1,7 @@
 @ECHO OFF
 setlocal
 
-IF NOT pwd==%cd% (cd /d %~dp0)
+cd /d %~dp0
 call .\batch\msvs-dev-env.bat
 cd ..\..
 ECHO Building project...

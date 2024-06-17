@@ -1,1 +1,0 @@
-Run first: win.bat, then linux.sh

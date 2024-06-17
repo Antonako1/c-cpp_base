@@ -8,9 +8,9 @@ unicode True
 !define VERSION "0.0.1"
 !define PROJECTNAME "C_CPP_BASE"
 
-Outfile "${VERSION}-win-installer-v${VERSION}.exe"
+Outfile "${PROJECTNAME}-win-installer-v${VERSION}.exe"
 BrandingText /TRIMCENTER "${PROJECTNAME} Setup V${VERSION}"
-Name "${PROJECTNAME} Setup V${VERSION}"
+Name "${PROJECTNAME} Setup V${PROJECTNAME}"
 RequestExecutionLevel admin
 
 ManifestSupportedOS Win10

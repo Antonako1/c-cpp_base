@@ -1,5 +1,5 @@
 @ECHO OFF
-cd /d %~dp0
+IF NOT pwd==%cd% (cd /d %~dp0) 
 ECHO Setting global variables...
 
 FOR %%A IN ("%~dp0.") DO SET "ROOTPATH=%%~dpA"

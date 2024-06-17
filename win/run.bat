@@ -1,8 +1,10 @@
 @echo off
-cd /d %~dp0
+IF NOT pwd==%cd% (cd /d %~dp0) 
 call .\batch\globals.bat
 cd ..
 cd ..\build
+copy ..\test\test.bat .\win\test.bat
 .\win\%PROJECTNAME%.exe %*
-@rem echo %ERRORLEVEL%
+echo %ERRORLEVEL%
+copy .\win\*.sh ..\test
 cd ..

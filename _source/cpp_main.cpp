@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../c/main.h"
+#include "main.h"
 
 extern "C" void cpp_call(int argc, char const *argv[]){
     std::cout << "cpp_call, args from main.c:" << std::endl; 

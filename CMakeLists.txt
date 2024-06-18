@@ -11,10 +11,10 @@ set(project_name "C_CPP_BASE")
 project(${project_name})
 
 file(GLOB SOURCES 
-"./c/*.c"
-"./c/*.h"
-"./cpp/*.cpp"
-"./cpp/*.hpp"
+"./_source/*.c"
+"./_source/*.h"
+"./_source/*.cpp"
+"./_source/*.hpp"
 )
 
 # Add executable

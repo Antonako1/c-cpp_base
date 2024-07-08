@@ -1,4 +1,5 @@
 Build and run
+
     Windows, visual studio:
     C++ CMake tools for windows
     C++ v14.xx build tools for (processor)
@@ -26,6 +27,7 @@ Build and run
 
 
 Releasing:
+
     In .\release_building, run win.bat and then linux.sh
     You may have to modify the order yourself or the release build process
 

@@ -2,7 +2,7 @@
 setlocal
 
 cd /d %~dp0
-call .\batch\msvs-dev-env.bat
+call .\scripts\msvs-dev-env.bat
 cd ..\..
 ECHO Building project...
 

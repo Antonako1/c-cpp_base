@@ -1,5 +1,5 @@
 #!/bin/bash
 cd "$(dirname "$0")"
-cd linux
+cd z-linux
 ./build.sh
 ./run.sh "$@"

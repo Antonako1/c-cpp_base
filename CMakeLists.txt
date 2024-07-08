@@ -6,29 +6,37 @@ if (POLICY CMP0141)
   set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
 endif()
 
+# set on when debugging
+# set(DEBUGGING__ 1)
+
 set(project_name "C_CPP_BASE")
 
-project(${project_name})
+project(${project_name} LANGUAGES C CXX)
 
 file(GLOB SOURCES 
-"./_source/*.c"
-"./_source/*.h"
-"./_source/*.cpp"
-"./_source/*.hpp"
+"./source/*.c"
+"./source/*.h"
+"./source/*.cpp"
+"./source/*.hpp"
 )
 
 # Add executable
 add_executable(${project_name} ${SOURCES})
 
-if (CMAKE_VERSION VERSION_GREATER 3.12)
-  set_property(TARGET ${project_name} PROPERTY CXX_STANDARD 20)
-endif()
-
 # On errors, abort build
-if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-  target_compile_options(${project_name} PRIVATE /WX)
-elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-  target_compile_options(${project_name} PRIVATE -Werror)
+# Compiler-specific options
+if (DEBUGGING__)
+  if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    target_compile_options(${project_name} PRIVATE /WX /Zi)
+  elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    target_compile_options(${project_name} PRIVATE -Werror -g)
+  endif()
+else()
+  if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    target_compile_options(${project_name} PRIVATE /WX)
+  elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    target_compile_options(${project_name} PRIVATE -Werror)
+  endif()
 endif()
 
 # Set output directory based on OS
@@ -38,4 +46,19 @@ elseif (CMAKE_SYSTEM_NAME STREQUAL "Linux")
   set_target_properties(${project_name} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/linux")
 endif()
 
-# TODO: Add tests and install targets if needed.
+# Set RPATH for Unix-like systems
+if (UNIX)
+  set(CMAKE_BUILD_RPATH "${ATRC_DIR}")
+  set(CMAKE_INSTALL_RPATH "${ATRC_DIR}")
+  set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+endif()
+
+# Enable debugging symbols for Release and Debug builds if DEBUGGING__ is TRUE
+if (DEBUGGING__)
+  if (NOT CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
+  endif()
+  add_compile_definitions(DEBUG)
+endif()
+message("STATUS" "CXX: ${CMAKE_CXX_FLAGS}")
+

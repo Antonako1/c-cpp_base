@@ -3,7 +3,7 @@ echo "Building project..."
 
 cd "$(dirname "$0")"
 
-. ./shell/globals.sh
+. ./scripts/globals.sh
 
 cd ..
 

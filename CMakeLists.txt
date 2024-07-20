@@ -6,8 +6,10 @@ if (POLICY CMP0141)
   set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
 endif()
 
-# set on when debugging
-# set(DEBUGGING__ 1)
+if(USEDEBUG STREQUAL "1")
+  set(DEBUG 1)
+endif()
+message(STATUS "Debug status: ${DEBUG}")
 
 set(project_name "C_CPP_BASE")
 
